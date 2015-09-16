@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'homes#index'
+  resources :questions, only: [:index, :new, :create, :show, :edit, :destroy, :patch, :update] do
+    resources :answers, only: [:index, :new, :create, :show, :edit, :destroy, :patch, :update]
+  end
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

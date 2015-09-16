@@ -1,0 +1,23 @@
+<h2> Question Details </h2>
+<h3><%= @question.title  %></h3>
+<ul>
+  <li><%= @question.description %></li>
+  <%= link_to 'Edit', '/questions/' + @question.to_param + '/edit/' %></br>
+  <%= link_to 'Delete', '/questions/' + @question.to_param, method: :delete %></br>
+</ul>
+
+<h4>The Answers</h4>
+<% @answers.each do |answer| %>
+<li><%= answer.body %></li>
+<% end %>
+
+<div class="large-12">
+  <h1>New Answer</h1>
+
+  <%= form_for [@question, @new_answer] do |q| %>
+    <%= q.label :body %>
+    <%= q.text_area :body %>
+
+    <%= q.submit "Add Answer" %>
+  <%- end -%>
+</div>

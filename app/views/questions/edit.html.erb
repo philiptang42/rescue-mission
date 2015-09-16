@@ -1,0 +1,19 @@
+<h3>fix your question</h3>
+
+<%= form_for @question do |q| %>
+  <div class="field">
+  <%= q.label :title %>
+  <%= q.text_field :title %>
+  </div>
+
+  <div class="field">
+  <%= q.label :description %>
+  <%= q.text_area :description %>
+  </div>
+
+  <%= q.submit "Update Question" %>
+<%- end -%>
+
+<%= link_to 'Delete', '/questions/' + @question.to_param, method: :delete %></br>
+<%= link_to 'Return to Question', @question %></br>
+<%= link_to 'Return to Homepage', questions_path %>
