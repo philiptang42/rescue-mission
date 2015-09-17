@@ -16,6 +16,17 @@ class AnswersController < ApplicationController
     @answer = Answer.new
   end
 
+  def update
+     @answer = Answer.find(params[:id])
+     @question = @answer.question
+     @question.answers.each do |answer|
+       answer.update(best_answer: false)
+     end
+     @answer.update(best_answer: true)
+     redirect_to @question
+     flash[:notice] = 'THE BEST'
+   end
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)

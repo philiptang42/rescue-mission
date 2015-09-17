@@ -1,17 +1,14 @@
 <h1>Question Queue</h1>
 <ul>
 <% @questions.each do |question| %>
-  <li><%= link_to question.title, "/questions/#{question.id}"  %></li>
+  <li><%= link_to markdown(question.title), "/questions/#{question.id}"  %></li>
 <% end %>
 </ul>
 
 <div class="large-12">
   <h1>New Question</h1>
-
-
   <%= form_for @question do |q| %>
     <div class="field">
-      <%= markdown @question.title %>
     <%= q.label :title %>
     <%= q.text_field :title %>
     </div>

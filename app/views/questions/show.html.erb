@@ -1,14 +1,15 @@
 <h2> Question Details </h2>
-<h3><%= @question.title  %></h3>
+<h3><%= markdown(@question.title) %></h3>
 <ul>
-  <li><%= @question.description %></li>
-  <%= link_to 'Edit', '/questions/' + @question.to_param + '/edit/' %></br>
-  <%= link_to 'Delete', '/questions/' + @question.to_param, method: :delete %></br>
+  <li><%= markdown(@question.description) %></li>
+  <%= link_to 'Edit', '/questions/' + @question.to_param + '/edit/', class: "button alert" %></br>
+  <%= link_to 'Delete', '/questions/' + @question.to_param, method: :delete, class: "button alert" %></br>
 </ul>
 
 <h4>The Answers</h4>
 <% @answers.each do |answer| %>
-<li><%= answer.body %></li>
+  <li><%= markdown(answer.body) %></li>
+  <%= button_to 'THIS IS THE BEST', [@question, answer], :method => :patch, class: "button success" %>
 <% end %>
 
 <div class="large-12">

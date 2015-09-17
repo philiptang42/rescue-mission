@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'foundation-rails'
 gem 'redcarpet'
+gem 'coderay'
 gem 'rouge'
 gem 'sanitize'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

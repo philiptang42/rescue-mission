@@ -25,12 +25,12 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update(question_params)
-      redirect_to @question, notice: "Question Updated"
-    else
-      redirect_to @question, notice: "Edit Rejected"
+      if @question.update(question_params)
+        redirect_to @question, notice: "Question Updated"
+      else
+        redirect_to @question, notice: "Edit Rejected"
+      end
     end
-  end
 
   def destroy
     @question = Question.find(params[:id])
@@ -42,14 +42,22 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @new_answer = Answer.new
-    @answers = Answer.where(question_id: @question.id).order('created_at desc')
+    @answers = Answer.where(question_id: @question.id).order('best_answer desc', 'created_at desc')
     render :show
   end
 
+  # def best_answer
+  #   @question = Question.find(params[:id])
+  #   if answer.best_answer = false
+  #     answer.best_anser = true
+  #   end
+  #   redirect_to @question
+  # end
 
   protected
   def question_params
     params.require(:question).permit(:title, :description, :user_attributes)
   end
+
 
 end

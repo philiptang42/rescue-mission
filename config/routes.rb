@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  resources :questions, only: [:index, :new, :create, :show, :edit, :destroy, :patch, :update] do
-    resources :answers, only: [:index, :new, :create, :show, :edit, :destroy, :patch, :update]
+  resources :questions do
+    resources :answers
   end
+  resources :best_answers
 
 
 
